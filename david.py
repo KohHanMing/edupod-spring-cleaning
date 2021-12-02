@@ -15,8 +15,10 @@ edge_cases = []
 for row in inReader:
     row[1] = row[1].upper()
     row[1] = row[1].replace(" ","")
+    row[1] = row[1].replace("&AMP;", "AND")
     if "-" not in row[1]:
         edge_cases.append(row[1])
+        row[1] = "EDUPOD-" + row[1]
         outwriter.writerow(row)
         continue
     position = row[1].rfind("-")
